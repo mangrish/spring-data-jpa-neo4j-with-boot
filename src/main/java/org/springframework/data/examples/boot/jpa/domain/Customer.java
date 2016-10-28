@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Created by markangrish on 27/10/2016.
+ * @author Mark Angrish
  */
 @Entity
 public class Customer {

@@ -20,7 +20,7 @@ import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Created by markangrish on 27/10/2016.
+ * @author Mark Angrish
  */
 @SpringBootApplication(exclude = Neo4jDataAutoConfiguration.class)
 public class Application {

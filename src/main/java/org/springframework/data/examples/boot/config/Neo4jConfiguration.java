@@ -13,7 +13,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * Created by markangrish on 27/10/2016.
+ * @author Mark Angrish
  */
 @Configuration
 @EnableNeo4jRepositories(basePackages = "org.springframework.data.examples.boot.neo4j.repository", transactionManagerRef = "neo4jTransactionManager")

@@ -11,7 +11,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 /**
- * Created by markangrish on 27/10/2016.
+ * @author Mark Angrish
  */
 @NodeEntity
 public class Person {

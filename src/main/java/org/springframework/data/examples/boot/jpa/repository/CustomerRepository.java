@@ -6,7 +6,7 @@ import org.springframework.data.examples.boot.jpa.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Created by markangrish on 27/10/2016.
+ * @author Mark Angrish
  */
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
