@@ -1,6 +1,6 @@
-package org.neo4j.examples.sdjpasdn.neo4j.repository;
+package org.springframework.data.examples.boot.neo4j.repository;
 
-import org.neo4j.examples.sdjpasdn.neo4j.domain.Person;
+import org.springframework.data.examples.boot.neo4j.domain.Person;
 import org.springframework.data.neo4j.repository.GraphRepository;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.data.neo4j.repository.GraphRepository;
  */
 public interface PersonRepository extends GraphRepository<Person> {
 
-    Person findByName(String name);
+	Person findByName(String name);
 }
