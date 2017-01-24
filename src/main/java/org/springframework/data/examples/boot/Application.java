@@ -9,8 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.examples.boot.jpa.repository.CustomerRepository;
 import org.springframework.data.examples.boot.jpa.domain.Customer;
+import org.springframework.data.examples.boot.jpa.repository.CustomerRepository;
 import org.springframework.data.examples.boot.neo4j.domain.Person;
 import org.springframework.data.examples.boot.neo4j.repository.PersonRepository;
 import org.springframework.data.neo4j.transaction.Neo4jTransactionManager;
@@ -25,7 +25,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 @SpringBootApplication(exclude = Neo4jDataAutoConfiguration.class)
 public class Application {
 
-	private static final Logger log = LoggerFactory.getLogger(Application.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class);
@@ -35,7 +35,7 @@ public class Application {
 	public CommandLineRunner demo(CustomerRepository customerRepository, PlatformTransactionManager jpaTransactionManager, PersonRepository personRepository, Neo4jTransactionManager neo4jTransactionManager) {
 		return (args) -> {
 
-			log.info(jpaTransactionManager.getClass().getName());
+			LOGGER.info(jpaTransactionManager.getClass().getName());
 
 			// save a couple of customers
 			TransactionTemplate jpaTransactionTemplate = new TransactionTemplate(jpaTransactionManager);
@@ -64,52 +64,52 @@ public class Application {
 			});
 
 			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			List<Customer> customers = jpaTransactionTemplate.execute(status -> customerRepository.findAll());
+			LOGGER.info("Customers found with findAll():");
+			LOGGER.info("-------------------------------");
+			Iterable<Customer> customers = jpaTransactionTemplate.execute(status -> customerRepository.findAll());
 			for (Customer customer : customers) {
-				log.info(customer.toString());
+				LOGGER.info(customer.toString());
 			}
-			log.info("");
+			LOGGER.info("");
 
 			// fetch all people
-			log.info("People found with findAll():");
-			log.info("-------------------------------");
+			LOGGER.info("People found with findAll():");
+			LOGGER.info("-------------------------------");
 			Iterable<Person> people = neo4jTransactionTemplate.execute(status -> personRepository.findAll());
 
 			for (Person person : people) {
-				log.info(person.toString());
+				LOGGER.info(person.toString());
 			}
-			log.info("");
+			LOGGER.info("");
 
 			// fetch an individual customer by ID
 			Customer customer = customerRepository.findOne(1L);
-			log.info("Customer found with findOne(1L):");
-			log.info("--------------------------------");
-			log.info(customer.toString());
-			log.info("");
+			LOGGER.info("Customer found with findOne(1L):");
+			LOGGER.info("--------------------------------");
+			LOGGER.info(customer.toString());
+			LOGGER.info("");
 
 			// fetch an individual person by ID
 			Person person = personRepository.findOne(1L);
-			log.info("Person found with findOne(1L):");
-			log.info("--------------------------------");
-			log.info(customer.toString());
-			log.info("");
+			LOGGER.info("Person found with findOne(1L):");
+			LOGGER.info("--------------------------------");
+			LOGGER.info(customer.toString());
+			LOGGER.info("");
 
 			// fetch customers by last name
-			log.info("Customer found with findByLastName('Bauer'):");
-			log.info("--------------------------------------------");
+			LOGGER.info("Customer found with findByLastName('Bauer'):");
+			LOGGER.info("--------------------------------------------");
 			for (Customer bauer : customerRepository.findByLastName("Bauer")) {
-				log.info(bauer.toString());
+				LOGGER.info(bauer.toString());
 			}
-			log.info("");
+			LOGGER.info("");
 
 			// fetch person by their name
-			log.info("Customer found with findByLastName('Bauer'):");
-			log.info("--------------------------------------------");
+			LOGGER.info("Customer found with findByLastName('Bauer'):");
+			LOGGER.info("--------------------------------------------");
 			Person jackBauer = personRepository.findByName("Jack Bauer");
-			log.info(jackBauer.toString());
-			log.info("");
+			LOGGER.info(jackBauer.toString());
+			LOGGER.info("");
 		};
 	}
 }
